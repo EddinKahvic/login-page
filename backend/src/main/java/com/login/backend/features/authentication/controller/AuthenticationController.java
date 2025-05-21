@@ -5,8 +5,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.login.backend.features.authentication.dto.AuthenticationRequestBody;
+import com.login.backend.features.authentication.dto.AuthenticationResponseBody;
 import com.login.backend.features.authentication.model.AuthenticationUser;
 import com.login.backend.features.authentication.service.AuthenticationService;
+
+import jakarta.validation.Valid;
+
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 @RestController
 @RequestMapping("/api/v1/authentication")
@@ -22,4 +30,10 @@ public class AuthenticationController {
     public AuthenticationUser getUser(@RequestParam String email) {
         return authenticationService.getUser(email);
     }
+
+    @PostMapping("/register")
+    public AuthenticationResponseBody registerPage(@Valid @RequestBody AuthenticationRequestBody registerRequestBody) {
+        return authenticationService.register(registerRequestBody);
+    }
+    
 }

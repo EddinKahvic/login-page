@@ -38,6 +38,8 @@ nbdist/
 ### VS Code ###
 .vscode/
 
+*.env
+
 
 # Vite generated content <---
 

@@ -31,6 +31,12 @@ public class AuthenticationController {
         return authenticationService.getUser(email);
     }
 
+    @PostMapping("/login")
+    public AuthenticationResponseBody loginPage(@Valid @RequestBody AuthenticationRequestBody loginRequestBody) {
+        return authenticationService.login(loginRequestBody);
+    }
+    
+
     @PostMapping("/register")
     public AuthenticationResponseBody registerPage(@Valid @RequestBody AuthenticationRequestBody registerRequestBody) {
         return authenticationService.register(registerRequestBody);

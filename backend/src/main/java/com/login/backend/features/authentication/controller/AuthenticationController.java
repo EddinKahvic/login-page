@@ -1,5 +1,7 @@
 package com.login.backend.features.authentication.controller;
 
+import java.io.UnsupportedEncodingException;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,6 +11,7 @@ import com.login.backend.features.authentication.dto.AuthenticationResponseBody;
 import com.login.backend.features.authentication.model.AuthenticationUser;
 import com.login.backend.features.authentication.service.AuthenticationService;
 
+import jakarta.mail.MessagingException;
 import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.PostMapping;
@@ -37,7 +40,7 @@ public class AuthenticationController {
     }
     
     @PostMapping("/register")
-    public AuthenticationResponseBody registerPage(@Valid @RequestBody AuthenticationRequestBody registerRequestBody) {
+    public AuthenticationResponseBody registerPage(@Valid @RequestBody AuthenticationRequestBody registerRequestBody) throws UnsupportedEncodingException, MessagingException {
         return authenticationService.register(registerRequestBody);
     }
     

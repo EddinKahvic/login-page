@@ -28,11 +28,12 @@ public class AuthenticationService {
 
     public AuthenticationResponseBody register(AuthenticationRequestBody registerRequestBody) {
         authenticationUserRepository.save(new AuthenticationUser(registerRequestBody.getEmail(), encoder.encode(registerRequestBody.getPassword())));
-        return new AuthenticationResponseBody("token", "User successfully registered!");
+        String token = jsonWebToken.generateToken(registerRequestBody.getEmail());
+        return new AuthenticationResponseBody(token, "User successfully registered");
     }
 
     public AuthenticationResponseBody login(AuthenticationRequestBody loginRequestBody) {
-        // Find user with request email. If password matches, return a generated token.
+        // Find user with request email. If password matches, return a generated token
         AuthenticationUser user = authenticationUserRepository.findByEmail(loginRequestBody.getEmail()).orElseThrow(() -> new IllegalArgumentException("User not found"));
         if (!encoder.matches(loginRequestBody.getPassword(), user.getPassword())) {
             throw new IllegalArgumentException("Password is incorrect");

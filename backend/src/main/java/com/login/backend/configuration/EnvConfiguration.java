@@ -1,4 +1,4 @@
-package com.login.backend.configuration.utils;
+package com.login.backend.configuration;
 
 import org.springframework.context.annotation.Configuration;
 import io.github.cdimascio.dotenv.Dotenv;

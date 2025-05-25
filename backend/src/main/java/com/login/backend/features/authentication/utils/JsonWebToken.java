@@ -6,7 +6,8 @@ import java.util.function.Function;
 import javax.crypto.SecretKey;
 
 import org.springframework.stereotype.Component;
-import com.login.backend.configuration.utils.EnvConfiguration;
+
+import com.login.backend.configuration.EnvConfiguration;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -25,7 +26,7 @@ public class JsonWebToken {
         return Jwts.builder()
                 .subject(email)
                 .issuedAt(new Date(System.currentTimeMillis()))
-                .expiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10))
+                .expiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10)) // Token expires after 10 hours
                 .signWith(getKey())
                 .compact();
     }
@@ -45,5 +46,13 @@ public class JsonWebToken {
 
     public String getEmailFromToken(String token) {
         return extractClaim(token, Claims::getSubject);
+    }
+
+    private Date extractExpiration(String token) {
+        return extractClaim(token, Claims::getExpiration);
+    }
+
+    public boolean isTokenExpired(String token) {
+        return extractExpiration(token).before(new Date());
     }
 }

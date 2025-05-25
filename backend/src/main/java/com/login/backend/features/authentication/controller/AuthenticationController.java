@@ -2,7 +2,6 @@ package com.login.backend.features.authentication.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.login.backend.features.authentication.dto.AuthenticationRequestBody;
@@ -13,6 +12,7 @@ import com.login.backend.features.authentication.service.AuthenticationService;
 import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 
 
@@ -27,8 +27,8 @@ public class AuthenticationController {
     }
 
     @GetMapping("/user")
-    public AuthenticationUser getUser(@RequestParam String email) {
-        return authenticationService.getUser(email);
+    public AuthenticationUser getUser(@RequestAttribute("authenticatedUser") AuthenticationUser authenticationUser) {
+        return authenticationService.getUser(authenticationUser.getEmail());
     }
 
     @PostMapping("/login")
@@ -36,7 +36,6 @@ public class AuthenticationController {
         return authenticationService.login(loginRequestBody);
     }
     
-
     @PostMapping("/register")
     public AuthenticationResponseBody registerPage(@Valid @RequestBody AuthenticationRequestBody registerRequestBody) {
         return authenticationService.register(registerRequestBody);

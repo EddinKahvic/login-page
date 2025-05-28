@@ -1,8 +1,6 @@
 package com.login.backend.features.authentication.service;
 
-import java.io.UnsupportedEncodingException;
 import java.security.SecureRandom;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
@@ -17,8 +15,6 @@ import com.login.backend.features.authentication.repository.AuthenticationUserRe
 import com.login.backend.features.authentication.utils.EmailService;
 import com.login.backend.features.authentication.utils.Encoder;
 import com.login.backend.features.authentication.utils.JsonWebToken;
-
-import jakarta.mail.MessagingException;
 
 
 @Service

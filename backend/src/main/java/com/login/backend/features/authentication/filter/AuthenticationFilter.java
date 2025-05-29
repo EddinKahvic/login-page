@@ -54,7 +54,7 @@ public class AuthenticationFilter extends HttpFilter{
         try {
             String authorization = request.getHeader("Authorization");
 
-            if (authorization == null | !authorization.startsWith("Bearer ")) {
+            if (authorization == null || !authorization.startsWith("Bearer ")) {
                 throw new ServletException("Missing authorization header");
             }
             

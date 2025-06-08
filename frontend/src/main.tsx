@@ -2,11 +2,11 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.scss'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import Feed from './features/feed/pages/Feed'
-import Login from './features/authentication/login/login'
-import Signup from './features/authentication/signup/signup'
-import ResetPassword from './features/authentication/resetPassword/resetPassword'
-import VerifyEmail from './features/authentication/verifyEmail/verifyEmail'
+import Feed from './features/feed/pages/feed'
+import { Login } from './features/authentication/pages/login/Login'
+import ResetPassword from './features/authentication/pages/resetPassword/resetPassword'
+import VerifyEmail from './features/authentication/pages/verifyEmail/verifyEmail'
+import { Signup } from './features/authentication/pages/signup/Signup'
 
 const router = createBrowserRouter([
   {

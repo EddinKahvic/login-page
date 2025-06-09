@@ -4,9 +4,9 @@ import './index.scss'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Feed from './features/feed/pages/feed'
 import { Login } from './features/authentication/pages/login/Login'
-import ResetPassword from './features/authentication/pages/resetPassword/resetPassword'
 import VerifyEmail from './features/authentication/pages/verifyEmail/verifyEmail'
 import { Signup } from './features/authentication/pages/signup/Signup'
+import { ResetPassword } from './features/authentication/pages/resetPassword/ResetPassword'
 
 const router = createBrowserRouter([
   {

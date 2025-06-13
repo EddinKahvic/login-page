@@ -34,9 +34,10 @@ public class AuthenticationFilter extends HttpFilter{
 
     @Override
     protected void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
-        response.addHeader("Access-Control-Allow-Origin", "*"); 
+        response.addHeader("Access-Control-Allow-Origin", "http://localhost:5173"); 
         response.addHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
         response.addHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+        response.addHeader("Access-Control-Allow-Credentials", "true");
 
         // If it's a preflight request, return early and don't apply filter
         if ("OPTIONS".equalsIgnoreCase(request.getMethod())) {

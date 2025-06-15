@@ -52,7 +52,7 @@ public class AuthenticationController {
         return "Email verified successfully";
     }
 
-    @PutMapping("/send-email-verification-token")
+    @GetMapping("/send-email-verification-token")
     public String sendEmailVerificationToken(@RequestAttribute("authenticatedUser") AuthenticationUser authenticationUser) {
         authenticationService.sendEmailVerificationToken(authenticationUser.getEmail());
         return "Email verification token sent successfully";

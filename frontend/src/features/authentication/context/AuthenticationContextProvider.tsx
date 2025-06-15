@@ -102,24 +102,6 @@ export function AuthenticationContextProvider() {
     fetchUser()
   }, [user, location.pathname])
 
-  // if (isLoading) {
-  //   return <Loader />
-  // }
-
-  // // If it's not loading when not signed in and not being on an auth page, return to login
-  // if (!isLoading && !user && !isOnAuthPage) {
-  //   return <Navigate to="/login" />
-  // }
-
-  // // If user is already logged in, redirect to home page if user is on a auth page
-  // if (user && user.emailVerified && isOnAuthPage) {
-  //   return <Navigate to="/" />
-  // }
-
-  // if (user && !user.emailVerified) {
-  //   return <Navigate to="verify-email" />
-  // }
-
   return (
     <AuthenticationContext.Provider value={{ user, login, logout, signup }}>
       {isLoading && <Loader />}
